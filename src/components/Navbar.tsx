@@ -34,7 +34,7 @@ const Navbar = () => {
         <a href="#home" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-xl bg-gradient-primary shadow-glow animate-pulse-glow" />
           <span className="font-display text-xl font-bold tracking-tight text-gradient">
-            IRIS
+            IRIS ESSABRI
           </span>
         </a>
 
