@@ -41,9 +41,9 @@ const About = () => {
             <span className="text-gradient">creative hands</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            I'm IRIS — a student exploring the intersection of design and
-            technology. I love turning ideas into smooth, interactive websites
-            and learning a little more every day.
+            Je suis IRIS ESSABRI — une étudiante qui explore le croisement entre
+            le design et la technologie. J'aime transformer des idées en sites
+            web fluides et interactifs, et apprendre un peu plus chaque jour.
           </p>
         </motion.div>
 
