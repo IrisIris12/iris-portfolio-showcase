@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Code2, Palette, Zap } from "lucide-react";
+import butterfliesImg from "@/assets/butterflies.jpg";
 
 const skills = [
   {
@@ -26,26 +27,48 @@ const About = () => {
   return (
     <section id="about" className="relative py-32">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="max-w-3xl mb-16"
-        >
-          <p className="text-sm font-medium text-primary-glow tracking-widest uppercase mb-3">
-            About me
-          </p>
-          <h2 className="font-display text-4xl md:text-6xl font-bold mb-6">
-            Curious mind,{" "}
-            <span className="text-gradient">creative hands</span>
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Je suis IRIS ESSABRI — une étudiante qui explore le croisement entre
-            le design et la technologie. J'aime transformer des idées en sites
-            web fluides et interactifs, et apprendre un peu plus chaque jour.
-          </p>
-        </motion.div>
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="relative order-2 lg:order-1"
+          >
+            <div className="absolute -inset-4 bg-gradient-to-br from-pink-500/30 via-fuchsia-500/20 to-blue-500/30 rounded-3xl blur-2xl" />
+            <div className="relative overflow-hidden rounded-3xl glow-border shadow-elegant animate-float">
+              <img
+                src={butterfliesImg}
+                alt="Papillons lumineux et magiques en rose et bleu"
+                width={1024}
+                height={1024}
+                loading="lazy"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7 }}
+            className="order-1 lg:order-2"
+          >
+            <p className="text-sm font-medium text-primary-glow tracking-widest uppercase mb-3">
+              À propos
+            </p>
+            <h2 className="font-display text-4xl md:text-6xl font-bold mb-6">
+              Esprit curieux,{" "}
+              <span className="name-gradient">mains créatives</span>
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Je suis IRIS ESSABRI — une étudiante qui explore le croisement entre
+              le design et la technologie. J'aime transformer des idées en sites
+              web fluides et interactifs, et apprendre un peu plus chaque jour.
+            </p>
+          </motion.div>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.map((skill, i) => (
