@@ -28,7 +28,7 @@ const Hero = () => {
           </div>
 
           <h1 className="font-display text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-[0.95] mb-6">
-            Hi, I'm <span className="text-gradient animated-gradient bg-clip-text text-transparent">IRIS ESSABRI</span>
+            Hi, I'm <span className="name-gradient">IRIS ESSABRI</span>
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-8 leading-relaxed">
