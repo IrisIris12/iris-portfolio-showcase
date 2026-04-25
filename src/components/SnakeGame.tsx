@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Gamepad2, RotateCcw, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ConfettiBurst3D from "./ConfettiBurst3D";
 
 const GRID = 20; // 20x20 cells
 const CELL = 20; // px
@@ -46,6 +47,7 @@ const SnakeGame = () => {
   const [best, setBest] = useState(0);
   const [paused, setPaused] = useState(false);
   const [over, setOver] = useState(false);
+  const [eatBurst, setEatBurst] = useState(0);
 
   const dirRef = useRef<Dir>(dir);
   const queuedDirRef = useRef<Dir | null>(null);
