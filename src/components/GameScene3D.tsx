@@ -4,7 +4,7 @@ import { Suspense, useRef } from "react";
 import type { Group, Mesh } from "three";
 
 const ArcadeJoystick = () => {
-  const stickRef = useRef<Mesh>(null);
+  const stickRef = useRef<Group>(null);
   useFrame((state) => {
     if (stickRef.current) {
       stickRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 1.5) * 0.3;
