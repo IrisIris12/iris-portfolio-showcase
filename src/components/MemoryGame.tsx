@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RotateCcw, Sparkles, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import GameScene3D from "./GameScene3D";
 
 const EMOJIS = ["🦋", "🌸", "🌙", "⭐", "🎵", "💜", "🪐", "🌷"];
 
@@ -73,17 +74,23 @@ const MemoryGame = () => {
   };
 
   return (
-    <section id="games" className="relative py-32">
+    <section id="games" className="relative py-32 overflow-hidden">
+      {/* 3D animated header */}
+      <div className="absolute top-0 left-0 right-0 h-[420px] -z-10 pointer-events-none opacity-80">
+        <GameScene3D />
+      </div>
+      <div className="absolute top-0 left-0 right-0 h-[420px] -z-10 bg-gradient-to-b from-transparent via-background/40 to-background pointer-events-none" />
+
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="max-w-3xl mb-12"
+          className="max-w-3xl mb-12 text-center mx-auto"
         >
           <p className="text-sm font-medium text-primary-glow tracking-widest uppercase mb-3">
-            Games
+            🎮 Arcade Zone
           </p>
           <h2 className="font-display text-4xl md:text-6xl font-bold mb-6">
             Butterfly <span className="name-gradient">Memory</span>
