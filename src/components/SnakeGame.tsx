@@ -283,6 +283,9 @@ const SnakeGame = () => {
                 }}
               />
 
+              {/* 3D burst when eating */}
+              <ConfettiBurst3D trigger={eatBurst} count={35} />
+
               {/* Food - pulsing neon orb */}
               <motion.div
                 key={`${food.x}-${food.y}`}
