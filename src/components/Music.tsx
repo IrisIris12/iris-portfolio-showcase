@@ -101,14 +101,14 @@ const Music = () => {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium text-muted-foreground mb-4">
-            <Music2 className="h-3.5 w-3.5 text-green-400" />
-            Ma playlist
+            <Music2 className="h-3.5 w-3.5 text-pink-400" />
+            K-Pop Playlist 🇰🇷
           </div>
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-3">
-            On Repeat <span className="text-gradient">🎧</span>
+            K-Pop <span className="text-gradient">On Repeat</span> 💜
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Les morceaux qui m'accompagnent quand je code, quand je dessine, ou juste pour rêver.
+            Les hits K-Pop les plus iconiques — BTS, BLACKPINK, NewJeans, Stray Kids, TWICE et plus encore.
           </p>
         </motion.div>
 
