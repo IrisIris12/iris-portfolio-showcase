@@ -5,6 +5,7 @@ import Projects from "@/components/Projects";
 import Blog from "@/components/Blog";
 import MemoryGame from "@/components/MemoryGame";
 import DinoGame from "@/components/DinoGame";
+import SnakeGame from "@/components/SnakeGame";
 import Contact from "@/components/Contact";
 
 const Index = () => {
@@ -18,6 +19,7 @@ const Index = () => {
         <Blog />
         <MemoryGame />
         <DinoGame />
+        <SnakeGame />
         <Contact />
       </main>
     </div>
