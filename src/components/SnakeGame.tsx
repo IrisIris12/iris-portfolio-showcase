@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Gamepad2, RotateCcw, Pause, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ConfettiBurst3D from "./ConfettiBurst3D";
 
 const GRID = 20; // 20x20 cells
 const CELL = 20; // px
@@ -46,6 +47,7 @@ const SnakeGame = () => {
   const [best, setBest] = useState(0);
   const [paused, setPaused] = useState(false);
   const [over, setOver] = useState(false);
+  const [eatBurst, setEatBurst] = useState(0);
 
   const dirRef = useRef<Dir>(dir);
   const queuedDirRef = useRef<Dir | null>(null);
@@ -153,6 +155,7 @@ const SnakeGame = () => {
             return ns;
           });
           setFood(randomFood(next));
+          setEatBurst((n) => n + 1);
         }
         return next;
       });
@@ -279,6 +282,9 @@ const SnakeGame = () => {
                     "repeating-linear-gradient(0deg, transparent 0, transparent 2px, hsl(0 0% 0% / 0.4) 2px, hsl(0 0% 0% / 0.4) 3px)",
                 }}
               />
+
+              {/* 3D burst when eating */}
+              <ConfettiBurst3D trigger={eatBurst} count={35} />
 
               {/* Food - pulsing neon orb */}
               <motion.div
