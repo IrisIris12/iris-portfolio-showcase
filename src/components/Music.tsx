@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Music2, Play, ExternalLink } from "lucide-react";
+import Music3DVisualizer from "./Music3DVisualizer";
 
 type Track = {
   title: string;
