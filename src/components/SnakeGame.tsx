@@ -161,7 +161,21 @@ const SnakeGame = () => {
   }, [paused, over, score, food]);
 
   return (
-    <section id="snake" className="py-24 relative">
+    <section id="snake" className="py-24 relative overflow-hidden">
+      {/* Neon background grid */}
+      <div className="absolute inset-0 -z-10 opacity-40 pointer-events-none">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(hsl(180 100% 50% / 0.08) 1px, transparent 1px), linear-gradient(90deg, hsl(320 100% 60% / 0.08) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-80 w-[600px] rounded-full bg-fuchsia-500/20 blur-3xl" />
+        <div className="absolute -bottom-32 left-1/4 h-80 w-[500px] rounded-full bg-cyan-500/20 blur-3xl" />
+      </div>
+
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -170,109 +184,233 @@ const SnakeGame = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium text-muted-foreground mb-4">
-            <Gamepad2 className="h-3.5 w-3.5 text-primary" />
-            Mini-jeu
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-mono uppercase tracking-[0.25em] mb-4 border"
+            style={{
+              borderColor: "hsl(180 100% 50% / 0.5)",
+              background: "hsl(180 100% 50% / 0.08)",
+              color: "hsl(180 100% 75%)",
+              boxShadow: "0 0 20px hsl(180 100% 50% / 0.3), inset 0 0 12px hsl(180 100% 50% / 0.15)",
+            }}
+          >
+            <Gamepad2 className="h-3.5 w-3.5" />
+            Arcade · 1989
           </div>
-          <h2 className="font-display text-4xl md:text-5xl font-bold mb-3">
-            Snake <span className="text-gradient">Classic</span>
+          <h2
+            className="font-display text-5xl md:text-6xl font-black mb-3 tracking-widest uppercase"
+            style={{
+              background: "linear-gradient(90deg, hsl(180 100% 60%), hsl(290 100% 70%), hsl(330 100% 65%))",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              filter: "drop-shadow(0 0 18px hsl(290 100% 60% / 0.6))",
+            }}
+          >
+            ◤ SNAKE ◢
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Mange les pommes 🍎, grandis, et évite les murs et ta queue. Flèches / WASD pour bouger, Espace pour pause.
+          <p className="text-muted-foreground max-w-xl mx-auto font-mono text-sm">
+            &gt; INSERT_COIN — flèches/WASD pour bouger, ESPACE pour pause.
           </p>
         </motion.div>
 
         <div className="flex flex-col items-center gap-6">
-          <div className="flex items-center gap-6 text-sm font-medium">
-            <div className="glass rounded-full px-4 py-2">
-              Score: <span className="text-primary font-bold">{score}</span>
+          {/* HUD */}
+          <div className="flex items-center gap-4 font-mono text-xs uppercase tracking-widest">
+            <div
+              className="px-5 py-2.5 rounded-sm border"
+              style={{
+                borderColor: "hsl(180 100% 50% / 0.6)",
+                background: "hsl(180 50% 5% / 0.6)",
+                color: "hsl(180 100% 75%)",
+                boxShadow: "0 0 14px hsl(180 100% 50% / 0.35), inset 0 0 8px hsl(180 100% 50% / 0.2)",
+              }}
+            >
+              SCORE <span className="font-bold ml-2">{String(score).padStart(4, "0")}</span>
             </div>
-            <div className="glass rounded-full px-4 py-2">
-              Best: <span className="text-accent font-bold">{best}</span>
+            <div
+              className="px-5 py-2.5 rounded-sm border"
+              style={{
+                borderColor: "hsl(330 100% 60% / 0.6)",
+                background: "hsl(330 50% 5% / 0.6)",
+                color: "hsl(330 100% 78%)",
+                boxShadow: "0 0 14px hsl(330 100% 55% / 0.35), inset 0 0 8px hsl(330 100% 55% / 0.2)",
+              }}
+            >
+              HI <span className="font-bold ml-2">{String(best).padStart(4, "0")}</span>
             </div>
           </div>
 
+          {/* Arcade frame */}
           <div
-            className="relative glow-border rounded-2xl overflow-hidden shadow-elegant bg-gradient-card"
-            style={{ width: SIZE, height: SIZE, maxWidth: "90vw", maxHeight: "90vw" }}
+            className="relative p-3 rounded-sm"
+            style={{
+              background: "linear-gradient(145deg, hsl(290 60% 12%), hsl(220 60% 8%))",
+              boxShadow:
+                "0 0 40px hsl(290 100% 50% / 0.4), 0 0 80px hsl(180 100% 50% / 0.2), inset 0 0 30px hsl(220 100% 50% / 0.15)",
+              border: "2px solid hsl(290 100% 60% / 0.5)",
+            }}
           >
-            {/* Grid background */}
             <div
-              className="absolute inset-0 opacity-30"
+              className="relative overflow-hidden rounded-sm"
               style={{
-                backgroundImage:
-                  "linear-gradient(hsl(var(--border)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border)) 1px, transparent 1px)",
-                backgroundSize: `${CELL}px ${CELL}px`,
+                width: SIZE,
+                height: SIZE,
+                maxWidth: "90vw",
+                maxHeight: "90vw",
+                background: "radial-gradient(ellipse at center, hsl(240 80% 8%), hsl(240 90% 3%))",
+                boxShadow: "inset 0 0 60px hsl(290 100% 30% / 0.4)",
               }}
-            />
+            >
+              {/* Neon grid */}
+              <div
+                className="absolute inset-0 opacity-50"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(hsl(180 100% 50% / 0.15) 1px, transparent 1px), linear-gradient(90deg, hsl(320 100% 60% / 0.15) 1px, transparent 1px)",
+                  backgroundSize: `${CELL}px ${CELL}px`,
+                }}
+              />
 
-            {/* Food */}
-            <motion.div
-              key={`${food.x}-${food.y}`}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              className="absolute rounded-full"
-              style={{
-                width: CELL - 4,
-                height: CELL - 4,
-                left: food.x * CELL + 2,
-                top: food.y * CELL + 2,
-                background:
-                  "radial-gradient(circle at 30% 30%, hsl(0 100% 70%), hsl(340 90% 55%))",
-                boxShadow: "0 0 12px hsl(340 100% 60% / 0.7)",
-              }}
-            />
+              {/* Scanlines */}
+              <div
+                className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-30"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(0deg, transparent 0, transparent 2px, hsl(0 0% 0% / 0.4) 2px, hsl(0 0% 0% / 0.4) 3px)",
+                }}
+              />
 
-            {/* Snake */}
-            {snake.map((s, i) => {
-              const isHead = i === 0;
-              return (
+              {/* Food - pulsing neon orb */}
+              <motion.div
+                key={`${food.x}-${food.y}`}
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{
+                  scale: [1, 1.15, 1],
+                  rotate: 0,
+                }}
+                transition={{
+                  scale: { duration: 1, repeat: Infinity, ease: "easeInOut" },
+                  rotate: { type: "spring", stiffness: 200, damping: 12 },
+                }}
+                className="absolute"
+                style={{
+                  width: CELL - 2,
+                  height: CELL - 2,
+                  left: food.x * CELL + 1,
+                  top: food.y * CELL + 1,
+                  background:
+                    "radial-gradient(circle at 30% 30%, hsl(60 100% 80%), hsl(45 100% 55%) 50%, hsl(20 100% 45%))",
+                  borderRadius: "30%",
+                  boxShadow:
+                    "0 0 16px hsl(45 100% 55% / 0.9), 0 0 30px hsl(20 100% 50% / 0.6)",
+                }}
+              />
+
+              {/* Snake - neon segments */}
+              {snake.map((s, i) => {
+                const isHead = i === 0;
+                const hue = (180 + i * 6) % 360;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={isHead ? false : { scale: 0.6 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute"
+                    style={{
+                      width: CELL - 2,
+                      height: CELL - 2,
+                      left: s.x * CELL + 1,
+                      top: s.y * CELL + 1,
+                      borderRadius: isHead ? "35%" : "25%",
+                      background: isHead
+                        ? "linear-gradient(135deg, hsl(180 100% 70%), hsl(290 100% 65%))"
+                        : `linear-gradient(135deg, hsl(${hue} 100% 60%), hsl(${(hue + 40) % 360} 100% 55%))`,
+                      boxShadow: isHead
+                        ? "0 0 18px hsl(290 100% 60% / 0.9), 0 0 30px hsl(180 100% 60% / 0.5), inset 0 0 6px hsl(0 0% 100% / 0.4)"
+                        : `0 0 10px hsl(${hue} 100% 60% / 0.7), inset 0 0 4px hsl(0 0% 100% / 0.2)`,
+                      border: "1px solid hsl(0 0% 100% / 0.15)",
+                    }}
+                  >
+                    {isHead && (
+                      <>
+                        {/* Eyes */}
+                        <div
+                          className="absolute rounded-full"
+                          style={{
+                            width: 4,
+                            height: 4,
+                            background: "hsl(0 0% 100%)",
+                            top: 4,
+                            left: 4,
+                            boxShadow: "0 0 4px hsl(0 0% 100%)",
+                          }}
+                        />
+                        <div
+                          className="absolute rounded-full"
+                          style={{
+                            width: 4,
+                            height: 4,
+                            background: "hsl(0 0% 100%)",
+                            top: 4,
+                            right: 4,
+                            boxShadow: "0 0 4px hsl(0 0% 100%)",
+                          }}
+                        />
+                      </>
+                    )}
+                  </motion.div>
+                );
+              })}
+
+              {/* CRT vignette */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at center, transparent 50%, hsl(0 0% 0% / 0.6) 100%)",
+                }}
+              />
+
+              {/* Overlays */}
+              {(paused || over) && (
                 <div
-                  key={i}
-                  className="absolute rounded-md"
-                  style={{
-                    width: CELL - 2,
-                    height: CELL - 2,
-                    left: s.x * CELL + 1,
-                    top: s.y * CELL + 1,
-                    background: isHead
-                      ? "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))"
-                      : `hsl(${250 + i * 2} 80% ${65 - Math.min(i, 25)}%)`,
-                    boxShadow: isHead
-                      ? "0 0 14px hsl(var(--primary) / 0.7)"
-                      : "0 0 4px hsl(var(--primary) / 0.3)",
-                    transition: "background 0.2s",
-                  }}
-                />
-              );
-            })}
-
-            {/* Overlays */}
-            {(paused || over) && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-background/70 backdrop-blur-sm">
-                <p className="font-display text-3xl font-bold mb-2">
-                  {over ? "Game Over" : "Pause"}
-                </p>
-                {over && (
-                  <p className="text-muted-foreground mb-4">Score final: {score}</p>
-                )}
-                <Button
-                  variant="hero"
-                  onClick={() => (over ? reset() : setPaused(false))}
+                  className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-sm"
+                  style={{ background: "hsl(240 90% 3% / 0.85)" }}
                 >
-                  {over ? (
-                    <>
-                      <RotateCcw className="h-4 w-4 mr-2" /> Rejouer
-                    </>
-                  ) : (
-                    <>
-                      <Play className="h-4 w-4 mr-2" /> Reprendre
-                    </>
+                  <p
+                    className="font-display text-4xl font-black mb-2 uppercase tracking-widest"
+                    style={{
+                      color: over ? "hsl(0 100% 65%)" : "hsl(180 100% 65%)",
+                      textShadow: over
+                        ? "0 0 20px hsl(0 100% 50% / 0.8)"
+                        : "0 0 20px hsl(180 100% 50% / 0.8)",
+                    }}
+                  >
+                    {over ? "GAME OVER" : "PAUSED"}
+                  </p>
+                  {over && (
+                    <p className="text-muted-foreground mb-4 font-mono text-sm uppercase tracking-widest">
+                      Score: {String(score).padStart(4, "0")}
+                    </p>
                   )}
-                </Button>
-              </div>
-            )}
+                  <Button
+                    variant="hero"
+                    onClick={() => (over ? reset() : setPaused(false))}
+                  >
+                    {over ? (
+                      <>
+                        <RotateCcw className="h-4 w-4 mr-2" /> INSERT COIN
+                      </>
+                    ) : (
+                      <>
+                        <Play className="h-4 w-4 mr-2" /> RESUME
+                      </>
+                    )}
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Controls */}
