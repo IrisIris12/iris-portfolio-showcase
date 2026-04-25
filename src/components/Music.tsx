@@ -88,6 +88,20 @@ const Music = () => {
           </p>
         </motion.div>
 
+        {/* 3D Visualizer */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative h-[280px] md:h-[340px] mb-12 rounded-2xl overflow-hidden glow-border bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-cyan-900/20"
+        >
+          <Music3DVisualizer />
+          <div className="absolute bottom-4 left-4 font-mono text-xs uppercase tracking-widest text-muted-foreground/80">
+            ♪ Now spinning
+          </div>
+        </motion.div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
           {tracks.map((track, i) => (
             <motion.a
