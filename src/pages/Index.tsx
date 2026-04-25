@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Blog from "@/components/Blog";
 import MemoryGame from "@/components/MemoryGame";
+import DinoGame from "@/components/DinoGame";
 import Contact from "@/components/Contact";
 
 const Index = () => {
@@ -16,6 +17,7 @@ const Index = () => {
         <Projects />
         <Blog />
         <MemoryGame />
+        <DinoGame />
         <Contact />
       </main>
     </div>
