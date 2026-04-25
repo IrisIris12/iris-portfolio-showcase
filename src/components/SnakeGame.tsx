@@ -155,6 +155,7 @@ const SnakeGame = () => {
             return ns;
           });
           setFood(randomFood(next));
+          setEatBurst((n) => n + 1);
         }
         return next;
       });
