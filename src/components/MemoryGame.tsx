@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { RotateCcw, Sparkles, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import GameScene3D from "./GameScene3D";
+import ConfettiBurst3D from "./ConfettiBurst3D";
 
 const EMOJIS = ["🦋", "🌸", "🌙", "⭐", "🎵", "💜", "🪐", "🌷"];
 
@@ -26,8 +27,14 @@ const MemoryGame = () => {
   const [selected, setSelected] = useState<number[]>([]);
   const [moves, setMoves] = useState(0);
   const [locked, setLocked] = useState(false);
+  const [matchBurst, setMatchBurst] = useState(0);
+  const [winBurst, setWinBurst] = useState(0);
 
   const won = useMemo(() => cards.length > 0 && cards.every((c) => c.matched), [cards]);
+
+  useEffect(() => {
+    if (won) setWinBurst((n) => n + 1);
+  }, [won]);
 
   useEffect(() => {
     if (selected.length !== 2) return;
@@ -45,6 +52,7 @@ const MemoryGame = () => {
             : c
         )
       );
+      if (isMatch) setMatchBurst((n) => n + 1);
       setSelected([]);
       setLocked(false);
     }, isMatch ? 450 : 800);
@@ -100,7 +108,9 @@ const MemoryGame = () => {
           </p>
         </motion.div>
 
-        <div className="rounded-3xl bg-gradient-card glass shadow-soft glow-border p-6 md:p-10">
+        <div className="relative rounded-3xl bg-gradient-card glass shadow-soft glow-border p-6 md:p-10 overflow-hidden">
+          <ConfettiBurst3D trigger={matchBurst} count={50} />
+          <ConfettiBurst3D trigger={winBurst} count={150} />
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
             <div className="flex items-center gap-6">
               <div>
