@@ -28,7 +28,7 @@ const features = [
     icon: Gamepad2,
     color: "from-violet-500 to-indigo-500",
     desc: "Little games to play and enjoy.",
-    href: "#",
+    href: "#games",
   },
 ];
 
