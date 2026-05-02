@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Blog from "@/components/Blog";
 import Music from "@/components/Music";
+import GamesGallery from "@/components/GamesGallery";
 import MemoryGame from "@/components/MemoryGame";
 import DinoGame from "@/components/DinoGame";
 import SnakeGame from "@/components/SnakeGame";
@@ -22,6 +23,7 @@ const Index = () => {
         <Projects />
         <Blog />
         <Music />
+        <GamesGallery />
         <MemoryGame />
         <DinoGame />
         <SnakeGame />
