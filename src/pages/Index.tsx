@@ -7,6 +7,7 @@ import Music from "@/components/Music";
 import MemoryGame from "@/components/MemoryGame";
 import DinoGame from "@/components/DinoGame";
 import SnakeGame from "@/components/SnakeGame";
+import BubblePopGarden from "@/components/BubblePopGarden";
 import Contact from "@/components/Contact";
 import SceneBackground3D from "@/components/SceneBackground3D";
 
@@ -24,6 +25,7 @@ const Index = () => {
         <MemoryGame />
         <DinoGame />
         <SnakeGame />
+        <BubblePopGarden />
         <Contact />
       </main>
     </div>
