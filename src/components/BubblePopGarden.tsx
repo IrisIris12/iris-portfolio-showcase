@@ -198,15 +198,17 @@ const BubblePopGarden = () => {
 
   return (
     <section id="bubble-pop" className="py-24 relative overflow-hidden">
-      {/* Soft pastel background */}
+      {/* Arcade garden background */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "radial-gradient(ellipse at 20% 10%, hsl(330 100% 88% / 0.35), transparent 50%), radial-gradient(ellipse at 80% 20%, hsl(200 100% 85% / 0.35), transparent 50%), radial-gradient(ellipse at 50% 90%, hsl(280 100% 88% / 0.3), transparent 50%)",
+            backgroundImage:
+              "linear-gradient(180deg, hsl(224 70% 7% / 0.92), hsl(260 62% 10% / 0.72) 48%, hsl(148 55% 9% / 0.82)), linear-gradient(90deg, hsl(178 90% 62% / 0.08) 1px, transparent 1px), linear-gradient(hsl(330 90% 68% / 0.08) 1px, transparent 1px)",
+            backgroundSize: "auto, 54px 54px, 54px 54px",
           }}
         />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-300/50 to-transparent" />
       </div>
 
       <div className="container">
@@ -217,25 +219,19 @@ const BubblePopGarden = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <div
-            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest mb-4 border"
-            style={{
-              borderColor: "hsl(330 100% 75% / 0.5)",
-              background: "hsl(330 100% 95% / 0.6)",
-              color: "hsl(330 70% 45%)",
-            }}
-          >
+          <div className="inline-flex items-center gap-2 rounded-md border border-emerald-300/30 bg-emerald-300/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-emerald-100 shadow-[0_0_24px_hsl(145_70%_48%_/_0.18)] mb-4">
             <Sparkles className="h-3.5 w-3.5" />
-            Kawaii Game · Free
+            Garden Arcade
           </div>
           <h2
             className="font-display text-5xl md:text-6xl font-black mb-3"
             style={{
               background:
-                "linear-gradient(90deg, hsl(330 90% 65%), hsl(280 90% 70%), hsl(200 90% 65%))",
+                "linear-gradient(90deg, hsl(145 85% 62%), hsl(190 90% 66%), hsl(330 90% 70%))",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
               WebkitTextFillColor: "transparent",
+              filter: "drop-shadow(0 0 22px hsl(170 90% 60% / 0.35))",
             }}
           >
             Bubble Pop Garden 🌸
@@ -247,33 +243,33 @@ const BubblePopGarden = () => {
 
         <div className="flex flex-col items-center gap-6">
           {/* HUD */}
-          <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-semibold">
+          <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-semibold [perspective:900px]">
             <div
-              className="px-5 py-2.5 rounded-full border backdrop-blur-sm"
+              className="rounded-lg border px-5 py-2.5 backdrop-blur-md shadow-[0_12px_0_hsl(145_70%_12%_/_0.35),0_22px_36px_hsl(0_0%_0%_/_0.24)] [transform:rotateX(8deg)]"
               style={{
-                borderColor: "hsl(330 80% 70% / 0.5)",
-                background: "hsl(330 100% 97% / 0.7)",
-                color: "hsl(330 70% 45%)",
+                borderColor: "hsl(145 80% 65% / 0.35)",
+                background: "hsl(145 70% 12% / 0.72)",
+                color: "hsl(145 90% 78%)",
               }}
             >
               Score <span className="font-black ml-2">{score}</span>
             </div>
             <div
-              className="px-5 py-2.5 rounded-full border backdrop-blur-sm"
+              className="rounded-lg border px-5 py-2.5 backdrop-blur-md shadow-[0_12px_0_hsl(270_70%_13%_/_0.35),0_22px_36px_hsl(0_0%_0%_/_0.24)] [transform:rotateX(8deg)]"
               style={{
-                borderColor: "hsl(280 80% 70% / 0.5)",
-                background: "hsl(280 100% 97% / 0.7)",
-                color: "hsl(280 70% 45%)",
+                borderColor: "hsl(280 80% 72% / 0.35)",
+                background: "hsl(280 60% 13% / 0.72)",
+                color: "hsl(280 90% 80%)",
               }}
             >
               Best <span className="font-black ml-2">{best}</span>
             </div>
             <div
-              className="px-5 py-2.5 rounded-full border backdrop-blur-sm"
+              className="rounded-lg border px-5 py-2.5 backdrop-blur-md shadow-[0_12px_0_hsl(195_70%_13%_/_0.35),0_22px_36px_hsl(0_0%_0%_/_0.24)] [transform:rotateX(8deg)]"
               style={{
-                borderColor: "hsl(200 80% 70% / 0.5)",
-                background: "hsl(200 100% 97% / 0.7)",
-                color: "hsl(200 70% 40%)",
+                borderColor: "hsl(190 85% 65% / 0.35)",
+                background: "hsl(195 75% 12% / 0.72)",
+                color: "hsl(190 95% 78%)",
               }}
             >
               Time <span className="font-black ml-2">{timeLeft}s</span>
@@ -285,11 +281,10 @@ const BubblePopGarden = () => {
                   initial={{ scale: 0.5, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 1.4, opacity: 0 }}
-                  className="px-5 py-2.5 rounded-full font-black"
+                  className="rounded-lg px-5 py-2.5 font-black shadow-[0_12px_26px_hsl(330_80%_45%_/_0.28)]"
                   style={{
-                    background: "linear-gradient(90deg, hsl(45 100% 60%), hsl(330 100% 65%))",
+                    background: "linear-gradient(135deg, hsl(45 100% 60%), hsl(330 100% 65%))",
                     color: "white",
-                    boxShadow: "0 6px 20px hsl(330 100% 60% / 0.5)",
                   }}
                 >
                   Combo x{combo} 🔥
@@ -301,22 +296,48 @@ const BubblePopGarden = () => {
           {/* Game field */}
           <div
             ref={fieldRef}
-            className="relative w-full max-w-3xl rounded-3xl overflow-hidden border-4 select-none"
+            className="relative w-full max-w-3xl select-none overflow-hidden rounded-2xl border"
             style={{
               height: "min(70vh, 560px)",
-              borderColor: "hsl(330 80% 85%)",
-              background:
-                "linear-gradient(180deg, hsl(200 100% 95%) 0%, hsl(280 100% 96%) 50%, hsl(330 100% 95%) 100%)",
+              borderColor: "hsl(160 70% 70% / 0.42)",
+              backgroundImage:
+                "linear-gradient(180deg, hsl(218 75% 13%) 0%, hsl(250 66% 16%) 42%, hsl(160 62% 17%) 100%)",
               boxShadow:
-                "0 20px 60px hsl(330 50% 60% / 0.25), inset 0 0 60px hsl(280 100% 90% / 0.4)",
+                "0 28px 0 hsl(158 55% 8% / 0.65), 0 44px 90px hsl(0 0% 0% / 0.45), inset 0 1px 0 hsl(0 0% 100% / 0.16), inset 0 0 80px hsl(190 90% 62% / 0.12)",
+              perspective: "900px",
             }}
           >
-            {/* Decorative clouds */}
-            <div className="absolute top-4 left-6 text-4xl opacity-60 pointer-events-none">☁️</div>
-            <div className="absolute top-10 right-12 text-3xl opacity-50 pointer-events-none">☁️</div>
-            <div className="absolute bottom-6 left-1/3 text-2xl opacity-40 pointer-events-none">🌷</div>
-            <div className="absolute bottom-4 right-8 text-3xl opacity-50 pointer-events-none">🌼</div>
-            <div className="absolute bottom-8 left-8 text-2xl opacity-40 pointer-events-none">🌸</div>
+            {/* Scene layers */}
+            <div
+              className="absolute inset-x-0 top-0 h-40 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(180deg, hsl(190 100% 70% / 0.16), transparent), repeating-linear-gradient(90deg, transparent 0 34px, hsl(190 90% 70% / 0.12) 34px 35px)",
+              }}
+            />
+            <div
+              className="absolute inset-x-[-10%] bottom-[-12%] h-56 pointer-events-none rounded-[45%_45%_0_0]"
+              style={{
+                background:
+                  "linear-gradient(180deg, hsl(140 60% 35%), hsl(155 70% 14%))",
+                boxShadow: "inset 0 22px 30px hsl(80 90% 70% / 0.14)",
+                transform: "rotateX(58deg)",
+                transformOrigin: "bottom center",
+              }}
+            />
+            <div
+              className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
+              style={{
+                backgroundImage:
+                  "linear-gradient(90deg, hsl(145 90% 65% / 0.16) 1px, transparent 1px), linear-gradient(hsl(145 90% 70% / 0.12) 1px, transparent 1px)",
+                backgroundSize: "34px 24px",
+                transform: "perspective(520px) rotateX(58deg) translateY(24px)",
+                transformOrigin: "bottom center",
+              }}
+            />
+            <div className="absolute bottom-5 left-8 text-3xl opacity-80 pointer-events-none drop-shadow-lg">🌷</div>
+            <div className="absolute bottom-8 left-1/3 text-2xl opacity-75 pointer-events-none drop-shadow-lg">🌼</div>
+            <div className="absolute bottom-6 right-10 text-3xl opacity-80 pointer-events-none drop-shadow-lg">🌸</div>
 
             {/* Bubbles */}
             {bubbles.map((b) => (
@@ -324,18 +345,18 @@ const BubblePopGarden = () => {
                 key={b.id}
                 onClick={(e) => popBubble(b, e)}
                 onTouchStart={(e) => popBubble(b, e)}
-                className="absolute flex items-center justify-center cursor-pointer transition-transform hover:scale-110 active:scale-95"
+                className="absolute flex cursor-pointer items-center justify-center rounded-full border transition-transform duration-200 hover:scale-110 active:scale-90"
                 style={{
                   left: `calc(${b.x}% - ${b.size / 2}px)`,
                   top: b.y,
                   width: b.size,
                   height: b.size,
-                  borderRadius: "50%",
-                  background: `radial-gradient(circle at 30% 30%, hsl(0 0% 100% / 0.9), hsl(${b.hue} 100% 80% / 0.5) 60%, hsl(${b.hue} 100% 70% / 0.3))`,
-                  border: `2px solid hsl(${b.hue} 100% 75% / 0.7)`,
-                  boxShadow: `0 4px 20px hsl(${b.hue} 100% 60% / 0.4), inset 0 -8px 16px hsl(${b.hue} 100% 70% / 0.3), inset 4px 4px 12px hsl(0 0% 100% / 0.6)`,
+                  background: `radial-gradient(circle at 28% 24%, hsl(0 0% 100% / 0.96) 0 12%, hsl(${b.hue} 100% 86% / 0.62) 34%, hsl(${b.hue} 100% 65% / 0.34) 66%, hsl(${b.hue} 100% 55% / 0.18))`,
+                  borderColor: `hsl(${b.hue} 100% 82% / 0.75)`,
+                  boxShadow: `0 16px 28px hsl(${b.hue} 100% 45% / 0.28), 0 2px 0 hsl(0 0% 100% / 0.34) inset, inset -10px -14px 22px hsl(${b.hue} 100% 42% / 0.24), inset 9px 9px 16px hsl(0 0% 100% / 0.58)`,
                   fontSize: b.size * 0.5,
-                  transform: `translateX(${Math.sin((performance.now() / 600) + b.wobble) * 14}px)`,
+                  transform: `translate3d(${Math.sin((performance.now() / 600) + b.wobble) * 14}px, 0, 80px) rotateX(10deg)`,
+                  backdropFilter: "blur(3px)",
                 }}
                 aria-label={`Pop ${b.emoji}`}
               >
@@ -348,7 +369,7 @@ const BubblePopGarden = () => {
                   style={{
                     width: b.size * 0.25,
                     height: b.size * 0.25,
-                    background: "hsl(0 0% 100% / 0.8)",
+                    background: "hsl(0 0% 100% / 0.9)",
                     top: b.size * 0.15,
                     left: b.size * 0.2,
                     filter: "blur(2px)",
@@ -363,7 +384,7 @@ const BubblePopGarden = () => {
                 <motion.div
                   key={p.id}
                   initial={{ scale: 0.6, opacity: 1, y: 0 }}
-                  animate={{ scale: 1.6, opacity: 0, y: -50 }}
+                  animate={{ scale: 1.8, opacity: 0, y: -58, rotate: 10 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                   className="absolute pointer-events-none flex flex-col items-center"
@@ -389,17 +410,17 @@ const BubblePopGarden = () => {
             {(!running || over) && (
               <div
                 className="absolute inset-0 flex flex-col items-center justify-center backdrop-blur-md"
-                style={{ background: "hsl(330 100% 97% / 0.7)" }}
+                style={{ background: "hsl(220 70% 7% / 0.72)" }}
               >
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  className="text-center px-6"
+                  className="rounded-2xl border border-white/12 bg-black/45 px-8 py-7 text-center shadow-[0_24px_80px_hsl(0_0%_0%_/_0.45),inset_0_1px_0_hsl(0_0%_100%_/_0.12)]"
                 >
                   {over ? (
                     <>
                       <div className="text-6xl mb-3">🎉</div>
-                      <p className="font-display text-4xl font-black mb-2" style={{ color: "hsl(330 70% 45%)" }}>
+                      <p className="font-display text-4xl font-black mb-2" style={{ color: "hsl(145 90% 72%)" }}>
                         Bravo !
                       </p>
                       <p className="text-lg mb-1">
@@ -415,7 +436,7 @@ const BubblePopGarden = () => {
                   ) : (
                     <>
                       <div className="text-6xl mb-3">🌸</div>
-                      <p className="font-display text-3xl font-black mb-2" style={{ color: "hsl(330 70% 45%)" }}>
+                      <p className="font-display text-3xl font-black mb-2" style={{ color: "hsl(145 90% 72%)" }}>
                         Bubble Pop Garden
                       </p>
                       <p className="text-sm text-muted-foreground mb-5 max-w-xs">

@@ -9,12 +9,15 @@ import MemoryGame from "@/components/MemoryGame";
 import DinoGame from "@/components/DinoGame";
 import SnakeGame from "@/components/SnakeGame";
 import BubblePopGarden from "@/components/BubblePopGarden";
+import FiveMiniGames from "@/components/FiveMiniGames";
 import Contact from "@/components/Contact";
 import SceneBackground3D from "@/components/SceneBackground3D";
+import CuteCursor from "@/components/CuteCursor";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
+      <CuteCursor />
       <SceneBackground3D />
       <Navbar />
       <main className="relative">
@@ -28,6 +31,7 @@ const Index = () => {
         <DinoGame />
         <SnakeGame />
         <BubblePopGarden />
+        <FiveMiniGames />
         <Contact />
       </main>
     </div>
@@ -35,4 +39,3 @@ const Index = () => {
 };
 
 export default Index;
-
