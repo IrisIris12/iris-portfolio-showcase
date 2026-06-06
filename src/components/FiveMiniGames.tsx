@@ -20,11 +20,11 @@ const winningLines = [
 
 const choices: Choice[] = ["Pierre", "Feuille", "Ciseaux"];
 const colorTargets = [
-  { name: "Rose", value: "hsl(330 90% 65%)" },
-  { name: "Cyan", value: "hsl(190 90% 58%)" },
-  { name: "Jaune", value: "hsl(48 95% 58%)" },
-  { name: "Vert", value: "hsl(145 70% 48%)" },
-  { name: "Violet", value: "hsl(270 85% 68%)" },
+  { name: "Rose", value: "hsl(194, 90%, 65%)" },
+  { name: "Cyan", value: "hsl(0, 0%, 0%)" },
+  { name: "Jaune", value: "hsl(48, 85%, 46%)" },
+  { name: "Vert", value: "hsl(199, 77%, 49%)" },
+  { name: "Violet", value: "hsl(284, 97%, 61%)" },
 ];
 
 const winnerFor = (board: Mark[]) => {
