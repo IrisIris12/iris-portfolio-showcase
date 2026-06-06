@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 
 type Mark = "X" | "O" | null;
 type Choice = "Pierre" | "Feuille" | "Ciseaux";
-
 const winningLines = [
   [0, 1, 2],
   [3, 4, 5],
