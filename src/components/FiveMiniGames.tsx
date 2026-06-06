@@ -18,6 +18,7 @@ const winningLines = [
 ];
 
 const choices: Choice[] = ["Pierre", "Feuille", "Ciseaux"];
+
 const colorTargets = [
   { name: "Rose", value: "hsl(194, 90%, 65%)" },
   { name: "Cyan", value: "hsl(0, 0%, 0%)" },
